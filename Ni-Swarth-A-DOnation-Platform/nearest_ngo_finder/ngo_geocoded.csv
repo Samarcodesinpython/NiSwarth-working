@@ -1,0 +1,31 @@
+id,name,services,location,rating,address,latitude,longitude
+1,Care & Share,"Clothing,Shelter,Education",Mumbai India,4.8,"456, Marine Drive, Churchgate, Mumbai - 400020",18.9344628,72.8239429
+2,Women Empowerment Trust,"Women,Education,Livelihood",Kolkata India,4.7,"987, Park Street, Kolkata - 700016",22.5487088,88.3583769
+3,Rural Development Foundation,"Rural,Agriculture,Education",Lucknow India,4.6,"147, Hazratganj, Lucknow - 226001",26.854809,80.9447594
+4,Disability Support Network,"Disability,Health,Education",Pune India,4.8,"258, FC Road, Deccan Gymkhana, Pune - 411004",18.5150117,73.8422183
+5,Uttarakhand Asha Foundation,"Education,Women,Child Care",Dehradun India,4.9,"369, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+6,Himalayan Environmental Awareness & Development Org (HEADS),"Environment,Rural,Community",Dehradun India,4.7,"741, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+7,Gurukul Foundation,"Education,Health,Youth",Dehradun India,4.8,"852, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+8,Sanrakshan Foundation,"Animal Welfare,Environment,Rescue",Dehradun India,4.6,"963, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+9,Yuva Shakti Foundation,"Youth,Education,Skill Development",Dehradun India,4.7,"147, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+10,Kartavya Foundation,"Food,Education,Health",Dehradun India,4.7,"258, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+11,Society for Inclusive Development (SFID),"Disability,Inclusion,Education",Dehradun India,4.6,"369, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+12,Himalayan Disaster Relief Network,"Disaster Relief,Rescue,Community Support",Dehradun India,4.9,"741, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+13,Vanvasi Seva Samiti,"Tribal Support,Healthcare,Education",Dehradun India,4.5,"852, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+14,Mental Wellness Trust,"Mental Health,Counseling,Awareness",Dehradun India,4.6,"963, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+15,Samvedna Foundation,"Women,Health,Education",Dehradun India,4.7,"147, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+16,Paryavaran Chetna Sangathan,"Environment,Tree Plantation,Awareness",Dehradun India,4.8,"258, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+17,Bal Sewa Trust,"Child Care,Nutrition,Education",Dehradun India,4.6,"852, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+18,Elder Aid Mission,"Elderly Care,Health,Community",Dehradun India,4.7,"963, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+19,Gramin Sewa Kendra,"Rural,Livelihood,Agriculture",Dehradun India,4.5,"147, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+20,Clean Water Initiative,"Environment,Health,Community",Mumbai India,4.7,"456, Marine Drive, Churchgate, Mumbai - 400020",18.9344628,72.8239429
+21,Art for All,"Education,Arts,Community",Kolkata India,4.8,"987, Park Street, Kolkata - 700016",22.5487088,88.3583769
+22,Green Warriors,"Environment,Education,Community",Pune India,4.9,"258, FC Road, Deccan Gymkhana, Pune - 411004",18.5150117,73.8422183
+23,Health First,"Health,Education,Community",Ahmedabad India,4.8,"123, CG Road, Ahmedabad - 380009",23.026011,72.5567179
+24,Himalayan Education Society,"Education,Youth,Skill Development",Dehradun India,4.7,"369, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+25,Dehradun Animal Welfare Society,"Animal Welfare,Rescue,Community",Dehradun India,4.8,"741, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+26,Himalayan Heritage Trust,"Culture,Education,Community",Dehradun India,4.6,"852, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+27,Green Valley Foundation,"Environment,Education,Agriculture",Dehradun India,4.7,"963, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+28,Dehradun Women's Empowerment Center,"Women,Education,Livelihood",Dehradun India,4.9,"147, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915
+29,Himalayan Youth Foundation,"Youth,Education,Sports",Dehradun India,4.8,"258, Sahastradhara Road, Dehradun - 248001",30.344058,78.0737997
+30,Dehradun Rural Development Society,"Rural,Agriculture,Education",Dehradun India,4.7,"369, Rajpur Road, Dehradun - 248001",30.3580353,78.0665915

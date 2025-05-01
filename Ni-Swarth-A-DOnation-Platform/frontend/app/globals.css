@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 10% 98%;
+    --foreground: 0 0% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    --primary: 90 38% 30%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 70 36% 35%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 43 75% 55%;
+    --accent-foreground: 0 0% 20%;
+    --muted: 60 5% 90%;
+    --muted-foreground: 0 0% 45%;
+    --border: 60 5% 90%;
+    --input: 60 5% 90%;
+    --ring: 90 38% 30%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 240 10% 10%;
+    --foreground: 0 0% 95%;
+    --card: 240 10% 15%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 10% 15%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 90 38% 40%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 70 36% 45%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 43 75% 65%;
+    --accent-foreground: 0 0% 20%;
+    --muted: 240 5% 20%;
+    --muted-foreground: 0 0% 60%;
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 90 38% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-r from-primary/90 to-secondary/90;
+}
+
+.dark .gradient-bg {
+  @apply bg-gradient-to-r from-primary/80 to-secondary/80;
+}
+
+.shimmer {
+  @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
+}
