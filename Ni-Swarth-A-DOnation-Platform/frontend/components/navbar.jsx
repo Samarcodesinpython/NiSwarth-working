@@ -67,6 +67,7 @@ const Navbar = () => {
     { name: "NGO", href: "/ngo" },
     { name: "Find NGOs", href: "/find-ngos" },
     { name: "All NGOs", href: "/all-ngos" },
+    { name: "Cottage Market", href: "/market" },
     { name: "Contact", href: "/contact" },
   ]
 

@@ -1,5 +1,8 @@
 {
-  "/auth/signin/page": "app/auth/signin/page.js",
   "/page": "app/page.js",
-  "/donor/page": "app/donor/page.js"
+  "/market/page": "app/market/page.js",
+  "/all-ngos/page": "app/all-ngos/page.js",
+  "/donor/page": "app/donor/page.js",
+  "/ngo/page": "app/ngo/page.js",
+  "/volunteer/page": "app/volunteer/page.js"
 }
