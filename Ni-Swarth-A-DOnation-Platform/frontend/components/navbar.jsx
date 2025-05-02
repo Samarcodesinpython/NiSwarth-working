@@ -29,7 +29,7 @@ const Navbar = () => {
 
   // Check localStorage for user on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem("user")
+    const storedUser = localStorage.getItem("userInfo")
     if (storedUser) {
       setMockUser(JSON.parse(storedUser))
       setIsAuthenticated(true)
@@ -54,7 +54,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     // Clear user from localStorage
-    localStorage.removeItem("user")
+    localStorage.removeItem("userInfo")
     setIsAuthenticated(false)
     setMockUser(null)
     router.push("/")

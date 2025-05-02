@@ -1,20 +1,46 @@
 //backend/routes/donationRoutes.js
 
 import express from 'express';
-import * as donationController from '../controllers/donationController.js';
-import { protect } from '../middleware/authMiddleware.js';
-import { getMyDonations } from '../controllers/donationController.js';
-
+import {
+  createDonation,
+  getDonations,
+  getDonationById,
+  updateDonationPayment,
+  getDonationStats,
+  getMyDonations,
+  updateDonationStatus,
+  getAllDonations,
+  updateDonation,
+  deleteDonation
+} from '../controllers/donationController.js';
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-// Protect routes that require login
-router.post('/', protect, donationController.createDonation);
-router.get('/my', protect, getMyDonations);
-router.get('/', donationController.getAllDonations); // public
-router.get('/:id', donationController.getDonationById); // public
-router.put('/:id', protect, donationController.updateDonation); // protected
-router.delete('/:id', protect, donationController.deleteDonation); // protected
-router.patch('/:id/status', protect, donationController.updateDonationStatus); // protected
+// Public routes
+router.route('/stats')
+  .get(protect, getDonationStats);
+
+// Protected routes
+router.route('/')
+  .post(protect, createDonation)
+  .get(protect, getDonations);
+
+router.route('/my')
+  .get(protect, getMyDonations);
+
+router.route('/all')
+  .get(protect, admin, getAllDonations);
+
+router.route('/:id')
+  .get(protect, getDonationById)
+  .put(protect, admin, updateDonation)
+  .delete(protect, admin, deleteDonation);
+
+router.route('/:id/payment')
+  .put(protect, admin, updateDonationPayment);
+
+router.route('/:id/status')
+  .patch(protect, admin, updateDonationStatus);
 
 export default router;

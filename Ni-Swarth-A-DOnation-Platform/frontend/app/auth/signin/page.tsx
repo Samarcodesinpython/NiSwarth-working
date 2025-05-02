@@ -86,50 +86,59 @@ export default function SignInPage() {
       },
   })
 
-  // --- Login Submit (Mock with Explicit Type) ---
+  // --- Login Submit (with API Call) ---
   const onLoginSubmit = async (data: LoginFormValues) => {
-     setIsLoading(true);
-     // TODO: Replace mock login logic with API call to POST /api/auth/login
-     console.log("Login data:", data);
-     toast({
-         title: "Info",
-         description: "Login API call not implemented yet.",
-     });
+    setIsLoading(true);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-     // Explicitly type the user variable to be User or null
-     const user: User | null = {
-      email: 'mockuser@example.com', // Provide a mock email
-      name: 'Mock User',             // Provide a mock name
-      role: 'donor',                 // Keep the role, or set as needed for your test
-      // You can also add _id and token if needed for your mock scenario
-      // _id: 'mockUserId123',
-      // token: 'mockTokenXYZ'
-  };
+    try {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+        }),
+      });
 
-     // This block should now be type-safe
-     if (user) {
-        // **Consider changing localStorage key to "userInfo" for consistency**
-        localStorage.setItem("user", JSON.stringify(user));
+      const responseData = await response.json();
 
-        // Redirect based on role
-        if (user.role === "donor") {
-          router.push("/donor");
-        } else if (user.role === "volunteer") {
-          router.push("/volunteer");
-        } else if (user.role === "ngo") {
-          router.push("/ngo");
-        } else {
-          router.push(callbackUrl);
-        }
-     } else {
-        // This part runs because user is null in the mock
-        toast({
-            title: "Error",
-            description: "Mock: Invalid email or password.", // Reflects the mock status
-            variant: "destructive",
-        });
-     }
-     setIsLoading(false);
+      if (!response.ok) {
+        throw new Error(responseData.message || `HTTP error! status: ${response.status}`);
+      }
+
+      // Use the response data from the backend
+      const user: User = responseData;
+
+      // Store user info (including token if provided by backend)
+      localStorage.setItem("userInfo", JSON.stringify(user));
+
+      toast({
+        title: "Success",
+        description: "Logged in successfully!",
+      });
+
+      // Redirect based on role from backend response
+      if (user.role === "donor") {
+        router.push("/donor");
+      } else if (user.role === "volunteer") {
+        router.push("/volunteer");
+      } else if (user.role === "ngo") {
+        router.push("/ngo");
+      } else {
+        router.push(callbackUrl);
+      }
+    } catch (error: any) {
+      toast({
+        title: "Login Error",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // --- Register Submit (with API Call) ---

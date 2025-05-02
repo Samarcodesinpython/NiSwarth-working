@@ -5,56 +5,70 @@ const donationSchema = new mongoose.Schema({
     donorId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: false
-    },
-    itemDetails: {
-        type: String,
         required: true
     },
-    images: [String],
-    location: {
-        type: {
-            type: String,
-            enum: ['Point'],
-            default: 'Point'
-        },
-        coordinates: {
-            type: [Number],
-            required: true
-        }
+    ngoId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'NGO',
+        required: true
     },
-    description: String,
-    status: {
+    campaignId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Campaign'
+    },
+    amount: {
+        type: Number,
+        required: true,
+        min: 0
+    },
+    currency: {
         type: String,
-        enum: ['pending', 'accepted', 'picked', 'delivered'],
+        default: 'INR'
+    },
+    paymentMethod: {
+        type: String,
+        enum: ['UPI', 'Card', 'NetBanking', 'Other'],
+        required: true
+    },
+    paymentStatus: {
+        type: String,
+        enum: ['pending', 'completed', 'failed', 'refunded'],
         default: 'pending'
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    transactionId: {
+        type: String,
+        unique: true
     },
-    updatedAt: {
-        type: Date,
-        default: Date.now
+    receiptNumber: {
+        type: String,
+        unique: true
     },
-    acceptedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    category: {
+        type: String,
+        enum: ['Food', 'Education', 'Health', 'Environment', 'Emergency', 'Other'],
+        required: true
     },
-    pickedUpBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    isAnonymous: {
+        type: Boolean,
+        default: false
     },
-    deliveredBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    acceptanceNotes: String,
-    pickupNotes: String,
-    deliveryNotes: String
+    message: String,
+    receiptUrl: String
+}, {
+    timestamps: true
 });
 
-donationSchema.index({ location: '2dsphere' });
+// Generate receipt number before saving
+donationSchema.pre('save', async function(next) {
+    if (!this.receiptNumber) {
+        const date = new Date();
+        const year = date.getFullYear().toString().substr(-2);
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        this.receiptNumber = `DON${year}${month}${random}`;
+    }
+    next();
+});
 
 const Donation = mongoose.model('Donation', donationSchema);
 export default Donation;

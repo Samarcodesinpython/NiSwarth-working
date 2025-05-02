@@ -1,8 +1,10 @@
 // backend/middleware/authMiddleware.js
 import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
 
-export const protect = async (req, res, next) => {
+// Protect routes
+export const protect = asyncHandler(async (req, res, next) => {
   let token;
 
   // Check if the request has an Authorization header and if it starts with "Bearer "
@@ -26,12 +28,66 @@ export const protect = async (req, res, next) => {
     } catch (error) {
       // If the token is invalid or expired, log the error and send an "Unauthorized" response
       console.error('Authentication error:', error);
-      res.status(401).json({ message: 'Not authorized, token failed' });
+      res.status(401);
+      throw new Error('Not authorized, token failed');
     }
   }
 
   // If there's no token in the header, send an "Unauthorized" response
   if (!token) {
-    res.status(401).json({ message: 'Not authorized, no token' });
+    res.status(401);
+    throw new Error('Not authorized, no token');
   }
+});
+
+// Admin middleware
+export const admin = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next();
+  } else {
+    res.status(401);
+    throw new Error('Not authorized as an admin');
+  }
+};
+
+// NGO middleware
+export const ngo = (req, res, next) => {
+  if (req.user && req.user.role === 'ngo') {
+    next();
+  } else {
+    res.status(401);
+    throw new Error('Not authorized as an NGO');
+  }
+};
+
+// Volunteer middleware
+export const volunteer = (req, res, next) => {
+  if (req.user && req.user.role === 'volunteer') {
+    next();
+  } else {
+    res.status(401);
+    throw new Error('Not authorized as a volunteer');
+  }
+};
+
+// Donor middleware
+export const donor = (req, res, next) => {
+  if (req.user && req.user.role === 'donor') {
+    next();
+  } else {
+    res.status(401);
+    throw new Error('Not authorized as a donor');
+  }
+};
+
+// Multiple roles middleware
+export const roles = (roles) => {
+  return (req, res, next) => {
+    if (req.user && roles.includes(req.user.role)) {
+      next();
+    } else {
+      res.status(401);
+      throw new Error('Not authorized for this action');
+    }
+  };
 };

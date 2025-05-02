@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { User, Heart, Users, Landmark, Download, Pencil } from "lucide-react";
@@ -26,14 +26,22 @@ const featuredNGOs = [
 export default function DonorDashboardPage() {
   const [donateModalOpen, setDonateModalOpen] = useState(false);
   const [profileEdit, setProfileEdit] = useState(false);
-  const [profile, setProfile] = useState({ name: "Rahul Sharma", email: "rahul@email.com", phone: "9876543210", payment: "UPI: rahul@upi" });
+  const [profile, setProfile] = useState({ name: "", email: "", phone: "", payment: "" });
   const [donateAmount, setDonateAmount] = useState(100);
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+    if (userInfo) {
+      const user = JSON.parse(userInfo);
+      setProfile((prev) => ({ ...prev, name: user.name, email: user.email }));
+    }
+  }, []);
 
   return (
     <div className="space-y-8">
       {/* Welcome Message */}
       <div className="mb-4">
-        <h1 className="text-3xl font-bold mb-1">Welcome back, Rahul Sharma!</h1>
+        <h1 className="text-3xl font-bold mb-1">Welcome back, {profile.name || "Donor"}!</h1>
         <p className="text-lg text-muted-foreground">Thank you for your generosity. Your contributions are making a real difference.</p>
       </div>
 
