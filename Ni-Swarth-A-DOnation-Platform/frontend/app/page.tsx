@@ -139,7 +139,7 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/20 font-bold"
+                className="border-white dark:border-white text-primary dark:text-white hover:bg-white/20 font-bold"
               >
                 <Link href="/find-ngos">Find NGOs Near You</Link>
               </Button>
