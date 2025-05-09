@@ -16,7 +16,7 @@ const topNGOs = [
     services: ["Food", "Education", "Health"],
     location: "Delhi, India",
     rating: 4.9,
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/ngos/hope-foundation.jpg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const topNGOs = [
     services: ["Clothing", "Shelter", "Education"],
     location: "Mumbai, India",
     rating: 4.8,
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/ngos/care-share.jpg",
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const topNGOs = [
     services: ["Health", "Food", "Elderly Care"],
     location: "Bangalore, India",
     rating: 4.7,
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/ngos/helping-hands.jpg",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const topNGOs = [
     services: ["Education", "Child Care", "Nutrition"],
     location: "Hyderabad, India",
     rating: 4.6,
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/ngos/child-welfare.jpg",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const topNGOs = [
     services: ["Environment", "Education", "Community"],
     location: "Chennai, India",
     rating: 4.5,
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/ngos/green-earth.jpg",
   },
 ]
 
@@ -60,7 +60,7 @@ const testimonials = [
     role: "Donor",
     content:
       "Ni-Swarth made it so easy to find NGOs that align with my values. I've been able to donate items that I know are going directly to those who need them most.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/ngos/pexels-rdne-6646851.jpg",
   },
   {
     id: 2,
@@ -68,7 +68,7 @@ const testimonials = [
     role: "Volunteer",
     content:
       "The volunteer matching system is incredible! I found an NGO that needed exactly the skills I have to offer, and the experience has been life-changing.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/ngos/pexels-rdne-6646918.jpg",
   },
   {
     id: 3,
@@ -76,7 +76,7 @@ const testimonials = [
     role: "NGO Director",
     content:
       "As a small NGO, visibility was always our challenge. Since joining Ni-Swarth, we've seen a 200% increase in donations and volunteer applications.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/ngos/pexels-rdne-6646852.jpg",
   },
 ]
 
@@ -103,7 +103,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/ngos/pexels-rdne-6647037.jpg"
             alt="Children smiling"
             fill
             priority
@@ -183,9 +183,10 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             <motion.div variants={fadeIn}>
-              <Card className="hover-lift border-2 border-primary/10 h-full">
-                <CardContent className="p-6 text-center h-full flex flex-col">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Card className="hover-lift border-2 border-primary/10 h-full group hover:border-primary/30 transition-all duration-300">
+                <CardContent className="p-6 text-center h-full flex flex-col relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Building className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-primary">Find NGOs</h3>
@@ -195,9 +196,9 @@ export default function Home() {
                   <Button
                     asChild
                     variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-white group"
+                    className="border-primary text-primary hover:bg-primary hover:text-white group relative z-10"
                   >
-                    <Link href="/find-ngos">
+                    <Link href="/find-ngos" className="flex items-center justify-center">
                       Explore NGOs{" "}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
@@ -207,9 +208,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeIn}>
-              <Card className="hover-lift border-2 border-primary/10 h-full">
-                <CardContent className="p-6 text-center h-full flex flex-col">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Card className="hover-lift border-2 border-primary/10 h-full group hover:border-primary/30 transition-all duration-300">
+                <CardContent className="p-6 text-center h-full flex flex-col relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Heart className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-primary">Donate Items</h3>
@@ -219,9 +221,9 @@ export default function Home() {
                   <Button
                     asChild
                     variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-white group"
+                    className="border-primary text-primary hover:bg-primary hover:text-white group relative z-10"
                   >
-                    <Link href="/donor">
+                    <Link href="/donor" className="flex items-center justify-center">
                       Donate Now <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
@@ -230,9 +232,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeIn}>
-              <Card className="hover-lift border-2 border-primary/10 h-full">
-                <CardContent className="p-6 text-center h-full flex flex-col">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Card className="hover-lift border-2 border-primary/10 h-full group hover:border-primary/30 transition-all duration-300">
+                <CardContent className="p-6 text-center h-full flex flex-col relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Users className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-primary">Volunteer Now</h3>
@@ -242,9 +245,9 @@ export default function Home() {
                   <Button
                     asChild
                     variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-white group"
+                    className="border-primary text-primary hover:bg-primary hover:text-white group relative z-10"
                   >
-                    <Link href="/volunteer">
+                    <Link href="/volunteer" className="flex items-center justify-center">
                       Join as Volunteer{" "}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>

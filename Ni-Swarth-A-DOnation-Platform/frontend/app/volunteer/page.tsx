@@ -9,6 +9,71 @@ export default function VolunteerDashboardPage() {
   const [profileEdit, setProfileEdit] = useState(false);
   const [profile, setProfile] = useState({ name: "Aditi Verma", email: "aditi@email.com", location: "Delhi", age: 24, skills: "Teaching, Fundraising", interests: "Education, Environment" });
 
+  // Mock data for events and commitments
+  const upcomingEvents = [
+    {
+      id: 1,
+      name: "Sanrakshan Tree Plantation",
+      ngo: "Sanrakshan",
+      date: "2024-08-01",
+      time: "07:00 AM - 11:00 AM",
+      location: "City Park, Jaipur",
+      urgent: true,
+    },
+    {
+      id: 2,
+      name: "School Supplies Donation Drive",
+      ngo: "Hope Foundation",
+      date: "2024-07-01",
+      time: "10:00 AM - 04:00 PM",
+      location: "Hope Community Center, Delhi",
+      urgent: false,
+    },
+    {
+      id: 3,
+      name: "Women's Empowerment Workshop",
+      ngo: "Women Empowerment Trust",
+      date: "2024-07-10",
+      time: "11:00 AM - 03:00 PM",
+      location: "Empowerment Hall, Kolkata",
+      urgent: true,
+    },
+  ]
+
+  const myCommitments = [
+    {
+      id: 1,
+      name: "Summer Beach Cleanup",
+      ngo: "Green Earth Initiative",
+      date: "2024-06-15",
+      hours: 4,
+      status: "Completed",
+      feedback: "Great teamwork and impact!",
+    },
+    {
+      id: 2,
+      name: "Save the Bay Fundraiser Gala",
+      ngo: "Harbor Conservation Trust",
+      date: "2024-06-22",
+      hours: 5,
+      status: "Upcoming",
+      feedback: "--",
+    },
+  ]
+
+  const badges = [
+    { id: 1, label: "Green Warrior", desc: "Planted 100+ trees", icon: <Award className="w-6 h-6 text-green-500" /> },
+    { id: 2, label: "Education Champion", desc: "Volunteered 50+ hours for education", icon: <Award className="w-6 h-6 text-blue-500" /> },
+    { id: 3, label: "Fundraiser Star", desc: "Helped raise over ₹10,000", icon: <Award className="w-6 h-6 text-yellow-500" /> },
+  ]
+
+  const certificates = [
+    { id: 1, name: "Certificate of Appreciation", event: "Sanrakshan Tree Plantation", url: "#" },
+    { id: 2, name: "Volunteer Excellence", event: "School Supplies Donation Drive", url: "#" },
+  ]
+
+  const quickSignUp = upcomingEvents.filter(e => e.urgent)
+
   return (
     <div className="space-y-8">
       {/* Welcome Message */}
@@ -91,35 +156,82 @@ export default function VolunteerDashboardPage() {
         </CardContent>
       </Card>
 
-      {/* Upcoming Events Placeholder */}
+      {/* Upcoming Events */}
       <Card className="shadow-md">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold mb-4">Upcoming Events</h2>
-          <div className="text-muted-foreground">[Events list/grid with filters and sign-up buttons will go here]</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {upcomingEvents.map(event => (
+              <div key={event.id} className="border rounded-lg p-4 bg-primary/5 flex flex-col gap-1">
+                <div className="font-semibold text-primary">{event.name}</div>
+                <div className="text-sm text-muted-foreground">by {event.ngo}</div>
+                <div className="text-xs text-foreground/70">{event.date} | {event.time} | {event.location}</div>
+                <Button className="mt-2 w-fit" size="sm">Sign Up</Button>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
-      {/* My Commitments Placeholder */}
+      {/* My Commitments */}
       <Card className="shadow-md">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold mb-4">My Commitments</h2>
-          <div className="text-muted-foreground">[List of events, status, hours, feedback will go here]</div>
+          <div className="space-y-3">
+            {myCommitments.map(commitment => (
+              <div key={commitment.id} className="border rounded-lg p-4 bg-secondary/10 flex flex-col gap-1">
+                <div className="font-semibold text-primary">{commitment.name}</div>
+                <div className="text-sm text-muted-foreground">by {commitment.ngo}</div>
+                <div className="text-xs text-foreground/70">{commitment.date} | Hours: {commitment.hours}</div>
+                <div className="text-xs">Status: <span className={commitment.status === 'Completed' ? 'text-green-600' : 'text-yellow-600'}>{commitment.status}</span></div>
+                <div className="text-xs italic">Feedback: {commitment.feedback}</div>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
-      {/* Quick Sign-Up Placeholder */}
+      {/* Quick Sign-Up */}
       <Card className="shadow-md">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold mb-4">Quick Sign-Up</h2>
-          <div className="text-muted-foreground">[Trending/urgent events sign-up buttons will go here]</div>
+          <div className="flex flex-wrap gap-4">
+            {quickSignUp.map(event => (
+              <div key={event.id} className="border rounded-lg p-4 bg-accent/10 flex flex-col gap-1">
+                <div className="font-semibold text-accent">{event.name}</div>
+                <div className="text-xs text-foreground/70">{event.date} | {event.location}</div>
+                <Button className="mt-2 w-fit" size="sm" variant="default">Sign Up Now</Button>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
-      {/* Badges & Certificates Placeholder */}
+      {/* Badges & Certificates */}
       <Card className="shadow-md">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold mb-4">Badges & Certificates</h2>
-          <div className="text-muted-foreground">[Badges, milestones, downloadable certificates will go here]</div>
+          <div className="flex flex-wrap gap-4 mb-4">
+            {badges.map(badge => (
+              <div key={badge.id} className="flex items-center gap-2 border rounded-lg px-3 py-2 bg-primary/10">
+                {badge.icon}
+                <div>
+                  <div className="font-semibold">{badge.label}</div>
+                  <div className="text-xs text-muted-foreground">{badge.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2">
+            <div className="font-semibold mb-2">Certificates</div>
+            <ul className="list-disc ml-6">
+              {certificates.map(cert => (
+                <li key={cert.id} className="mb-1">
+                  <a href={cert.url} className="text-accent underline">{cert.name}</a> <span className="text-xs text-muted-foreground">({cert.event})</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </CardContent>
       </Card>
 

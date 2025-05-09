@@ -11,6 +11,26 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+    "/all-ngos/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/all-ngos/loading.js"
+    ],
+    "/all-ngos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/all-ngos/page.js"
+    ],
+    "/find-ngos/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/find-ngos/loading.js"
+    ],
+    "/find-ngos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/find-ngos/page.js"
+    ],
     "/donor/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -20,16 +40,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/donor/page.js"
-    ],
-    "/auth/signin/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/auth/signin/loading.js"
-    ],
-    "/auth/signin/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/auth/signin/page.js"
     ],
     "/volunteer/layout": [
       "static/chunks/webpack.js",
@@ -41,15 +51,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/volunteer/page.js"
     ],
-    "/ngo/layout": [
+    "/community/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/ngo/layout.js"
-    ],
-    "/ngo/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/ngo/page.js"
+      "static/chunks/app/community/page.js"
     ]
   }
 }

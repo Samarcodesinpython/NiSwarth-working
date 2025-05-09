@@ -1,6 +1,8 @@
 {
   "/page": "app/page.js",
-  "/auth/signin/page": "app/auth/signin/page.js",
-  "/donor/page": "app/donor/page.js",
-  "/ngo/page": "app/ngo/page.js"
+  "/find-ngos/page": "app/find-ngos/page.js",
+  "/community/page": "app/community/page.js",
+  "/all-ngos/page": "app/all-ngos/page.js",
+  "/volunteer/page": "app/volunteer/page.js",
+  "/donor/page": "app/donor/page.js"
 }
